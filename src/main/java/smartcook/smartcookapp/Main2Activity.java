@@ -12,8 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
 
 public class Main2Activity extends AppCompatActivity
+
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -40,6 +48,29 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        String[] values= new String[] {"Android List View", "Adapter implementation", "Simple list View in Android",
+        "Create List View Android", "Android Example", "List View Source Code", "List View Array Adapter",
+        "Android Example List View"};
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.listview_row,values);
+        final ListView mListView = (ListView)findViewById(R.id.recipe_list_view);
+        mListView.setAdapter(adapter);
+
+        //ListView Item Click Listener
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //List View Clicked item index
+                int itemPosition = position;
+
+                //ListView clicked item value
+                String itemValue = (String) mListView.getItemAtPosition(position);
+
+                //Show alert
+                Toast.makeText(getApplicationContext(), "Position: "+itemPosition+" ListItem: " +itemValue
+                , Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -98,4 +129,7 @@ public class Main2Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 }
