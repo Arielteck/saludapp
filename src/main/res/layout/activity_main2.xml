@@ -22,11 +22,6 @@
         app:headerLayout="@layout/nav_header_main2"
         app:menu="@menu/activity_main2_drawer" />
 
-    <ListView
-        android:id="@+id/recipe_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:divider="#000"
-        android:paddingTop="55dp" />
+
 
 </android.support.v4.widget.DrawerLayout>
